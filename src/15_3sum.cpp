@@ -24,14 +24,27 @@
 
 using namespace std;
 
+
 class Solution {
+    struct hash{
+        size_t operator()(const vector<int>& iterable) const {
+            size_t result = std::hash<int>()(iterable[0]);
+
+            for (int i = 1; i < iterable.size(); ++i){
+                result ^= std::hash<int>()(iterable[i]);
+            }
+
+            return result;
+        }
+    };
+
 public:
 
     vector<vector<int>> threeSum(vector<int>& nums) {
         const int n = nums.size();
 
         unordered_map<int, vector<pair<int, int>>> pairs_and_sum;
-        unordered_set<vector<int>, int, vector_hash> set_of_results;
+        unordered_set<vector<int>, hash> set_of_results;
 
         for (int i = 0; i < n; ++i) {
             for (int j = i + 1; j < n; ++j) {
@@ -57,16 +70,4 @@ public:
 
         return result;
     }
-
-public:
-    struct vector_hash{
-        size_t operator()(const vector<int>& vec){
-            size_t result = hash<int>()(vec[0]);
-            for (size_t i = 1; i < vec.size(); ++i){
-                result ^= hash<int>()(vec[i]);
-            }
-
-            return result;
-        }
-    };
 };
