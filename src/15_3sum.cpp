@@ -1,7 +1,23 @@
-#include <iostream>
-#include <string>
-#include <vector>
+//
+// Created by Oleksyshyn oleksii on 01.11.19.
+//
+
+
+
+/*
+ * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0?
+ * Find all unique triplets in the array which gives the sum of zero.
+ *
+ * Note:
+ *
+ * The solution set must not contain duplicate triplets.
+ *
+ * Solution -- hash map, complexity -- O(n^2) in time
+ * */
+
+
 #include <algorithm>
+#include <vector>
 #include <utility>
 #include <unordered_map>
 #include <unordered_set>
@@ -54,20 +70,3 @@ public:
         }
     };
 };
-
-
-int main() {
-    Solution s;
-    vector<int> x = {-1, 0, 1, 2, -1, -4};
-    auto y = Solution::vector_hash{};
-    vector<int> z = {1, 2, 3};
-    std::cout << y(z);
-    //std::cout << s.threeSum(x).size();
-    /*for (const auto& result : s.threeSum(x)){
-        for (auto el : result){
-            std::cout << el << " ";
-        }
-        std::cout << std::endl;
-    }*/
-    return 0;
-}
